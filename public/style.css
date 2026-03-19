@@ -1,0 +1,195 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blush:    #e8d5cc;
+      --cream:    #f7f3f0;
+      --dark:     #2c2420;
+      --mid:      #6b5c56;
+      --light:    #a89490;
+      --divider:  #d9ccc8;
+      --accent:   #b08070;
+      --sidebar-w: 230px;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: #ede8e4;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px;
+    }
+
+    .card {
+      width: 100%;
+      background: #fff;
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      box-shadow: 0 8px 48px rgba(44,36,32,.18);
+    }
+
+    .barraLateral {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quote-block {
+      padding: 28px 22px 20px;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      line-height: .6;
+      color: var(--blush);
+      position: absolute;
+      top: 18px;
+      left: 14px;
+      user-select: none;
+    }
+    .quote-block p {
+      font-size: 10.5px;
+      color: var(--mid);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+      padding-left: 2px;
+    }
+    .quote-block p em { color: var(--accent); font-style: normal; }
+
+    .subSection { padding: 20px 22px; }
+    .subSection + .subSection { border-top: 1px solid var(--divider); }
+
+    .subTitle {
+      font-family: 'Jost', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    .habilidades { list-style: none; }
+    .habilidades li {
+      font-size: 10.5px;
+      color: var(--mid);
+      padding: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .habilidades li::before {
+      content: '·';
+      color: var(--accent);
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .linguas-List { list-style: none; }
+    .linguas-List li {
+      font-size: 10.5px;
+      color: var(--mid);
+      padding: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .linguas-List li::before {
+      content: '·';
+      color: var(--accent);
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .main {
+      padding: 36px 38px 48px;
+    }
+
+    .header {
+      padding-bottom: 22px;
+      border-bottom: 2px solid var(--blush);
+      margin-bottom: 28px;
+    }
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1.1;
+    }
+    .header .role {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: .12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin: 4px 0 16px;
+    }
+
+    .contactInfo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 16px;
+    }
+    .contactInfo span {
+      font-size: 10px;
+      color: var(--mid);
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--dark);
+      border-bottom: 1px solid var(--divider);
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+    }
+
+    section { margin-bottom: 30px; }
+
+    .entry { margin-bottom: 18px; }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+    .entry-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .entry-duration {
+      font-size: 9.5px;
+      color: var(--light);
+      letter-spacing: .04em;
+      white-space: nowrap;
+      font-style: italic;
+    }
+
+    .entry-bullets { list-style: none; }
+    .entry-bullets li {
+      font-size: 10px;
+      color: var(--mid);
+      line-height: 1.55;
+      padding: 2px 0 2px 12px;
+      position: relative;
+    }
+    .entry-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pessoas & Produções</title>
+<link href="style.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-logo" href="#">Pessoas <span>&</span> Produções</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Início</a></li>
+      <li><a href="#">Pessoas</a></li>
+      <li><a href="#">Produções</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+    <div class="nav-search">
+      <input type="text" placeholder="Buscar pessoa ou obra…"/>
+      <button class="nav-btn">Entrar</button>
+    </div>
+  </nav>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sb-section">
+      <p class="sb-title">Área de atuação</p>
+      <div class="filter-group">
+        <button class="filter-btn active">Literatura</button>
+        <button class="filter-btn">Música</button>
+        <button class="filter-btn">Ciência</button>
+        <button class="filter-btn">Arte Visual</button>
+        <button class="filter-btn">Cinema</button>
+        <button class="filter-btn">Filosofia</button>
+      </div>
+    </div>
+    <div class="sb-section">
+      <p class="sb-title">Período</p>
+      <div class="filter-group">
+        <button class="filter-btn">Séc. XVIII</button>
+        <button class="filter-btn">Séc. XIX</button>
+        <button class="filter-btn active">Séc. XX</button>
+        <button class="filter-btn">Séc. XXI</button>
+      </div>
+    </div>
+    <div class="sb-section">
+      <p class="sb-title">Origem</p>
+      <div class="filter-group">
+        <button class="filter-btn active">Brasil</button>
+        <button class="filter-btn">Europa</button>
+        <button class="filter-btn">América do Norte</button>
+        <button class="filter-btn">Ásia</button>
+      </div>
+    </div>
+    <div class="sb-section">
+      <p class="sb-title">Seguindo</p>
+      <div class="sub-item">
+        <div class="sub-avatar"><img src="https://picsum.photos/id/1012/32/32" alt="Machado de Assis"/></div>
+        <div><div class="sub-name">Machado de Assis</div><div class="sub-meta">Literatura · Séc. XIX</div></div>
+      </div>
+      <div class="sub-item">
+        <div class="sub-avatar"><img src="https://picsum.photos/id/1027/32/32" alt="Clarice Lispector"/></div>
+        <div><div class="sub-name">Clarice Lispector</div><div class="sub-meta">Literatura · Séc. XX</div></div>
+      </div>
+      <div class="sub-item">
+        <div class="sub-avatar"><img src="https://picsum.photos/id/1025/32/32" alt="Villa-Lobos"/></div>
+        <div><div class="sub-name">Villa-Lobos</div><div class="sub-meta">Música · Séc. XX</div></div>
+      </div>
+      <div class="sub-item">
+        <div class="sub-avatar"><img src="https://picsum.photos/id/1074/32/32" alt="Oscar Niemeyer"/></div>
+        <div><div class="sub-name">Oscar Niemeyer</div><div class="sub-meta">Arquitetura · Séc. XX</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <span class="hero-badge">Pessoa em Destaque</span>
+      <div class="hero-img">
+        <img src="https://picsum.photos/id/1005/160/220" alt="Machado de Assis"/>
+      </div>
+      <div class="hero-body">
+        <h2>Machado de Assis</h2>
+        <p>Considerado o maior nome da literatura brasileira, fundador da Academia Brasileira de Letras e mestre do Realismo. Sua obra marcou profundamente a cultura nacional com romances, contos e crônicas de rara perspicácia psicológica.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-primary">Ver perfil completo</button>
+        <button class="btn-ghost">+ Seguir</button>
+      </div>
+    </section>
+
+    <section class="pessoas-section">
+      <div class="sec-header">
+        <h2>Pessoas</h2>
+        <a href="#">Ver todos →</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active">Em destaque</button>
+        <button class="tab-btn">Recém adicionados</button>
+        <button class="tab-btn">Mais buscados</button>
+      </div>
+      <div class="pessoa-grid">
+
+        <article class="pessoa-card">
+          <div class="pessoa-card-img">
+            <img src="https://picsum.photos/id/1027/200/270" alt="Clarice Lispector"/>
+            <span class="area-badge">Literatura</span>
+          </div>
+          <div class="pessoa-card-body">
+            <h3>Clarice Lispector</h3>
+            <p class="pessoa-card-meta">Escritora · 1920–1977</p>
+            <div class="pessoa-card-tags"><span class="tag">Literatura</span><span class="tag">Brasil</span></div>
+          </div>
+        </article>
+
+        <article class="pessoa-card">
+          <div class="pessoa-card-img">
+            <img src="https://picsum.photos/id/1012/200/270" alt="Guimarães Rosa"/>
+            <span class="area-badge">Literatura</span>
+          </div>
+          <div class="pessoa-card-body">
+            <h3>Guimarães Rosa</h3>
+            <p class="pessoa-card-meta">Escritor · 1908–1967</p>
+            <div class="pessoa-card-tags"><span class="tag">Literatura</span><span class="tag">Brasil</span></div>
+          </div>
+        </article>
+
+        <article class="pessoa-card">
+          <div class="pessoa-card-img">
+            <img src="https://picsum.photos/id/1025/200/270" alt="Villa-Lobos"/>
+            <span class="area-badge">Música</span>
+          </div>
+          <div class="pessoa-card-body">
+            <h3>Villa-Lobos</h3>
+            <p class="pessoa-card-meta">Compositor · 1887–1959</p>
+            <div class="pessoa-card-tags"><span class="tag">Música</span><span class="tag">Brasil</span></div>
+          </div>
+        </article>
+
+        <article class="pessoa-card">
+          <div class="pessoa-card-img">
+            <img src="https://picsum.photos/id/1074/200/270" alt="Drummond de Andrade"/>
+            <span class="area-badge">Poesia</span>
+          </div>
+          <div class="pessoa-card-body">
+            <h3>Drummond de Andrade</h3>
+            <p class="pessoa-card-meta">Poeta · 1902–1987</p>
+            <div class="pessoa-card-tags"><span class="tag">Poesia</span><span class="tag">Brasil</span></div>
+          </div>
+        </article>
+
+        <article class="pessoa-card">
+          <div class="pessoa-card-img">
+            <img src="https://picsum.photos/id/1011/200/270" alt="Tarsila do Amaral"/>
+            <span class="area-badge">Arte</span>
+          </div>
+          <div class="pessoa-card-body">
+            <h3>Tarsila do Amaral</h3>
+            <p class="pessoa-card-meta">Pintora · 1886–1973</p>
+            <div class="pessoa-card-tags"><span class="tag">Arte</span><span class="tag">Brasil</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="obras-section">
+      <div class="sec-header">
+        <h2>Produções recentes</h2>
+        <a href="#">Ver todas →</a>
+      </div>
+      <div class="obra-grid">
+
+        <article class="obra-card">
+          <div class="obra-card-img"><img src="https://picsum.photos/id/24/200/300" alt="Dom Casmurro"/></div>
+          <div class="obra-card-body">
+            <p class="obra-card-title">Dom Casmurro</p>
+            <p class="obra-card-autor">Machado de Assis</p>
+            <p class="obra-card-year">1899 · Romance</p>
+          </div>
+        </article>
+
+        <article class="obra-card">
+          <div class="obra-card-img"><img src="https://picsum.photos/id/42/200/300" alt="A Hora da Estrela"/></div>
+          <div class="obra-card-body">
+            <p class="obra-card-title">A Hora da Estrela</p>
+            <p class="obra-card-autor">Clarice Lispector</p>
+            <p class="obra-card-year">1977 · Romance</p>
+          </div>
+        </article>
+
+        <article class="obra-card">
+          <div class="obra-card-img"><img src="https://picsum.photos/id/65/200/300" alt="Grande Sertão: Veredas"/></div>
+          <div class="obra-card-body">
+            <p class="obra-card-title">Grande Sertão: Veredas</p>
+            <p class="obra-card-autor">Guimarães Rosa</p>
+            <p class="obra-card-year">1956 · Romance</p>
+          </div>
+        </article>
+
+        <article class="obra-card">
+          <div class="obra-card-img"><img src="https://picsum.photos/id/167/200/300" alt="Bachianas Brasileiras"/></div>
+          <div class="obra-card-body">
+            <p class="obra-card-title">Bachianas Brasileiras</p>
+            <p class="obra-card-autor">Villa-Lobos</p>
+            <p class="obra-card-year">1930–1945 · Música</p>
+          </div>
+        </article>
+
+        <article class="obra-card">
+          <div class="obra-card-img"><img src="https://picsum.photos/id/240/200/300" alt="Abaporu"/></div>
+          <div class="obra-card-body">
+            <p class="obra-card-title">Abaporu</p>
+            <p class="obra-card-autor">Tarsila do Amaral</p>
+            <p class="obra-card-year">1928 · Pintura</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="relacoes">
+      <div class="sec-header">
+        <h2>Relações: pessoa × produção</h2>
+        <a href="#">Ver todas →</a>
+      </div>
+      <div class="relacao-list">
+
+        <div class="relacao-item">
+          <div class="rel-pessoa">
+            <div class="rel-avatar"><img src="https://picsum.photos/id/1005/40/40" alt="Machado de Assis"/></div>
+            <div><div class="rel-info-name">Machado de Assis</div><div class="rel-info-meta">Escritor</div></div>
+          </div>
+          <span class="rel-arrow">→</span>
+          <span class="rel-role">autor</span>
+          <span class="rel-arrow">→</span>
+          <div class="rel-obra">
+            <div class="rel-obra-thumb"><img src="https://picsum.photos/id/24/34/46" alt="Dom Casmurro"/></div>
+            <div><div class="rel-obra-title">Dom Casmurro</div><div class="rel-obra-year">1899</div></div>
+          </div>
+          <button class="rel-btn">Ver →</button>
+        </div>
+
+        <div class="relacao-item">
+          <div class="rel-pessoa">
+            <div class="rel-avatar"><img src="https://picsum.photos/id/1027/40/40" alt="Clarice Lispector"/></div>
+            <div><div class="rel-info-name">Clarice Lispector</div><div class="rel-info-meta">Escritora</div></div>
+          </div>
+          <span class="rel-arrow">→</span>
+          <span class="rel-role">autora</span>
+          <span class="rel-arrow">→</span>
+          <div class="rel-obra">
+            <div class="rel-obra-thumb"><img src="https://picsum.photos/id/42/34/46" alt="A Hora da Estrela"/></div>
+            <div><div class="rel-obra-title">A Hora da Estrela</div><div class="rel-obra-year">1977</div></div>
+          </div>
+          <button class="rel-btn">Ver →</button>
+        </div>
+
+        <div class="relacao-item">
+          <div class="rel-pessoa">
+            <div class="rel-avatar"><img src="https://picsum.photos/id/1011/40/40" alt="Tarsila do Amaral"/></div>
+            <div><div class="rel-info-name">Tarsila do Amaral</div><div class="rel-info-meta">Pintora</div></div>
+          </div>
+          <span class="rel-arrow">→</span>
+          <span class="rel-role">criadora</span>
+          <span class="rel-arrow">→</span>
+          <div class="rel-obra">
+            <div class="rel-obra-thumb"><img src="https://picsum.photos/id/240/34/46" alt="Abaporu"/></div>
+            <div><div class="rel-obra-title">Abaporu</div><div class="rel-obra-year">1928</div></div>
+          </div>
+          <button class="rel-btn">Ver →</button>
+        </div>
+
+        <div class="relacao-item">
+          <div class="rel-pessoa">
+            <div class="rel-avatar"><img src="https://picsum.photos/id/1012/40/40" alt="Guimarães Rosa"/></div>
+            <div><div class="rel-info-name">Guimarães Rosa</div><div class="rel-info-meta">Escritor</div></div>
+          </div>
+          <span class="rel-arrow">→</span>
+          <span class="rel-role">autor</span>
+          <span class="rel-arrow">→</span>
+          <div class="rel-obra">
+            <div class="rel-obra-thumb"><img src="https://picsum.photos/id/65/34/46" alt="Grande Sertão"/></div>
+            <div><div class="rel-obra-title">Grande Sertão: Veredas</div><div class="rel-obra-year">1956</div></div>
+          </div>
+          <button class="rel-btn">Ver →</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <a class="footer-logo" href="#">Pessoas <span>&</span> Produções</a>
+    <p>Um catálogo colaborativo de pessoas notáveis e suas criações. Conectando vidas, obras e legados através do tempo.</p>
+  </div>
+  <div>
+    <p class="footer-col-title">Navegar</p>
+    <ul class="footer-links">
+      <li><a href="#">Início</a></li>
+      <li><a href="#">Pessoas</a></li>
+      <li><a href="#">Produções</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Comunidade</p>
+    <ul class="footer-links">
+      <li><a href="#">Contribuir</a></li>
+      <li><a href="#">Diretrizes</a></li>
+      <li><a href="#">API</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Newsletter</p>
+    <div class="newsletter-form">
+      <p>Receba novidades sobre pessoas e obras adicionadas ao catálogo.</p>
+      <input type="text" placeholder="Seu nome"/>
+      <input type="email" placeholder="seu@email.com"/>
+      <button type="submit">Inscrever-se</button>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Pessoas & Produções. Todos os direitos reservados.</p>
+  <p>Feito com cuidado para preservar legados.</p>
+</div>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const group = btn.closest('.filter-group');
+    group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

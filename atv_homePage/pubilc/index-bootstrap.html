@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pessoas & Produções — Bootstrap</title>
+<!-- Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --accent:  #c8a96e;
+    --accent2: #8b5e3c;
+    --ink:     #1a1a1a;
+    --bg:      #f5f2ec;
+    --tag-bg:  #ede9e0;
+    --sidebar: #1a1a1a;
+  }
+
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); }
+
+  /* ── Navbar ── */
+  .navbar { background: var(--ink) !important; border-bottom: 2px solid var(--accent); }
+  .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent) !important; font-size: 20px;
+  }
+  .navbar-brand span { color: #fff; font-style: italic; }
+  .nav-link { color: rgba(255,255,255,.65) !important; font-size: 13px; }
+  .nav-link:hover, .nav-link.active { color: var(--accent) !important; }
+  .navbar-toggler { border-color: rgba(255,255,255,.3); }
+  .navbar-toggler-icon { filter: invert(1); }
+  .navbar .form-control {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px; color: #fff; font-size: 13px;
+  }
+  .navbar .form-control::placeholder { color: rgba(255,255,255,.4); }
+  .navbar .btn-nav {
+    background: var(--accent); color: var(--ink);
+    border: none; border-radius: 20px;
+    font-size: 13px; font-weight: 500; padding: 6px 18px;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    background: var(--sidebar);
+    min-height: calc(100vh - 62px);
+    padding: 24px 0;
+    position: sticky; top: 62px;
+  }
+  .sb-title {
+    font-size: 9px; font-weight: 500; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 10px; padding: 0 16px;
+  }
+  .sb-section { padding: 0 16px 20px; }
+  .sb-section + .sb-section { border-top: 1px solid rgba(255,255,255,.07); padding-top: 16px; }
+  .filter-btn {
+    display: block; width: 100%; text-align: left;
+    background: transparent; border: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.6); border-radius: 6px;
+    padding: 6px 12px; font-size: 12px; margin-bottom: 4px;
+    transition: all .2s; cursor: pointer;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent); color: var(--accent);
+    background: rgba(200,169,110,.1);
+  }
+  .sub-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .sub-avatar {
+    width: 30px; height: 30px; border-radius: 50%; overflow: hidden;
+    border: 1px solid rgba(200,169,110,.3); flex-shrink: 0;
+  }
+  .sub-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .sub-name { font-size: 11px; color: rgba(255,255,255,.6); }
+  .sub-meta { font-size: 10px; color: rgba(255,255,255,.3); }
+
+  /* ── Hero ── */
+  .hero-section {
+    background: var(--ink); border-radius: 12px;
+    overflow: hidden; position: relative; margin-bottom: 32px;
+  }
+  .hero-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(200,169,110,.2); color: var(--accent);
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px;
+    border: 1px solid rgba(200,169,110,.35);
+    z-index: 2;
+  }
+  .hero-img { height: 100%; min-height: 180px; overflow: hidden; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-body { padding: 40px 24px 24px; }
+  .hero-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px;
+  }
+  .hero-body p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.65; }
+  .hero-actions { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 24px; }
+  .btn-accent { background: var(--accent); color: var(--ink); border: none; border-radius: 6px; padding: 10px 22px; font-size: 13px; font-weight: 500; }
+  .btn-outline-light-custom {
+    background: transparent; color: rgba(255,255,255,.6);
+    border: 1px solid rgba(255,255,255,.2); border-radius: 6px;
+    padding: 9px 22px; font-size: 13px;
+    transition: all .2s;
+  }
+  .btn-outline-light-custom:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Section titles ── */
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; color: var(--ink);
+  }
+  .sec-link { font-size: 12px; color: var(--accent2); text-decoration: none; }
+  .sec-link:hover { color: var(--accent); }
+
+  /* ── Tabs ── */
+  .custom-tabs { background: #fff; border: 1px solid #e2ddd4; border-radius: 8px; padding: 4px; display: inline-flex; gap: 4px; margin-bottom: 16px; }
+  .custom-tabs .tab-btn { background: transparent; border: none; padding: 6px 16px; border-radius: 6px; font-size: 13px; color: #555550; cursor: pointer; }
+  .custom-tabs .tab-btn.active { background: var(--ink); color: #fff; }
+
+  /* ── Cards de Pessoa ── */
+  .pessoa-card {
+    background: #fff; border: 1px solid #e2ddd4;
+    border-radius: 10px; overflow: hidden;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    cursor: pointer; position: relative; height: 100%;
+  }
+  .pessoa-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.1); border-color: var(--accent); }
+  .pessoa-card-img { aspect-ratio: 3/4; overflow: hidden; position: relative; }
+  .pessoa-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+  .pessoa-card:hover .pessoa-card-img img { transform: scale(1.04); }
+  .area-badge {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(26,26,26,.7); color: var(--accent);
+    font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 20px;
+  }
+  .pessoa-card-body { padding: 12px; }
+  .pessoa-card-body h3 { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .pessoa-card-meta { font-size: 11px; color: #999994; margin-bottom: 6px; }
+  .tag { font-size: 10px; background: var(--tag-bg); color: #555550; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+
+  /* ── Cards de Obra ── */
+  .obra-card {
+    background: #fff; border: 1px solid #e2ddd4;
+    border-radius: 10px; overflow: hidden;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    cursor: pointer; height: 100%;
+  }
+  .obra-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.1); border-color: var(--accent); }
+  .obra-card-img { aspect-ratio: 2/3; overflow: hidden; }
+  .obra-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+  .obra-card:hover .obra-card-img img { transform: scale(1.04); }
+  .obra-card-body { padding: 12px; }
+  .obra-card-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .obra-card-autor { font-size: 11px; color: var(--accent2); margin-bottom: 2px; }
+  .obra-card-year { font-size: 11px; color: #999994; }
+
+  /* ── Relações ── */
+  .relacao-item {
+    background: #fff; border: 1px solid #e2ddd4;
+    border-radius: 10px; padding: 14px 18px;
+    transition: border-color .2s, box-shadow .2s; cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .relacao-item:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+  .rel-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid #e2ddd4; flex-shrink: 0; }
+  .rel-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .rel-info-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .rel-info-meta { font-size: 11px; color: #999994; }
+  .rel-arrow { font-size: 18px; color: var(--accent); }
+  .rel-role { background: var(--tag-bg); color: #555550; font-size: 11px; padding: 4px 12px; border-radius: 20px; }
+  .rel-obra-thumb { width: 34px; height: 46px; border-radius: 4px; overflow: hidden; border: 1px solid #e2ddd4; flex-shrink: 0; }
+  .rel-obra-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .rel-obra-title { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .rel-obra-year { font-size: 11px; color: #999994; }
+  .btn-rel { background: transparent; border: 1px solid #e2ddd4; color: #555550; border-radius: 6px; padding: 5px 14px; font-size: 12px; transition: all .2s; }
+  .btn-rel:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Footer ── */
+  .site-footer { background: var(--ink); padding: 40px 0; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--accent); text-decoration: none; display: block; margin-bottom: 8px; }
+  .footer-logo span { color: #fff; font-style: italic; }
+  .footer-desc { font-size: 12px; color: rgba(255,255,255,.35); line-height: 1.7; }
+  .footer-col-title { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .footer-links { list-style: none; padding: 0; }
+  .footer-links li { margin-bottom: 8px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .newsletter-input { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 6px; padding: 8px 14px; font-size: 13px; color: #fff; width: 100%; margin-bottom: 8px; outline: none; }
+  .newsletter-input::placeholder { color: rgba(255,255,255,.3); }
+  .btn-newsletter { background: var(--accent); color: var(--ink); border: none; border-radius: 6px; padding: 9px; font-size: 13px; font-weight: 500; width: 100%; cursor: pointer; }
+  .footer-bottom { background: #111; padding: 12px 0; }
+  .footer-bottom p { font-size: 11px; color: rgba(255,255,255,.25); margin: 0; }
+
+  /* ── Utilitários ── */
+  .main-content { padding: 28px 28px 60px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR Bootstrap -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="#">Pessoas <span>&</span> Produções</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto gap-1">
+        <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Pessoas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Produções</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+        <input class="form-control" type="text" placeholder="Buscar pessoa ou obra…" style="width:220px"/>
+        <button class="btn-nav">Entrar</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- LAYOUT: sidebar + main -->
+<div class="container-fluid p-0">
+  <div class="row g-0">
+
+    <!-- SIDEBAR — oculta em mobile (d-none d-lg-block) -->
+    <div class="col-lg-2 d-none d-lg-block">
+      <aside class="sidebar">
+
+        <div class="sb-section">
+          <p class="sb-title">Área de atuação</p>
+          <button class="filter-btn active">Literatura</button>
+          <button class="filter-btn">Música</button>
+          <button class="filter-btn">Ciência</button>
+          <button class="filter-btn">Arte Visual</button>
+          <button class="filter-btn">Cinema</button>
+          <button class="filter-btn">Filosofia</button>
+        </div>
+
+        <div class="sb-section">
+          <p class="sb-title">Período</p>
+          <button class="filter-btn">Séc. XVIII</button>
+          <button class="filter-btn">Séc. XIX</button>
+          <button class="filter-btn active">Séc. XX</button>
+          <button class="filter-btn">Séc. XXI</button>
+        </div>
+
+        <div class="sb-section">
+          <p class="sb-title">Origem</p>
+          <button class="filter-btn active">Brasil</button>
+          <button class="filter-btn">Europa</button>
+          <button class="filter-btn">América do Norte</button>
+          <button class="filter-btn">Ásia</button>
+        </div>
+
+        <div class="sb-section">
+          <p class="sb-title">Seguindo</p>
+          <div class="sub-item">
+            <div class="sub-avatar"><img src="https://picsum.photos/id/1012/32/32" alt=""/></div>
+            <div><div class="sub-name">Machado de Assis</div><div class="sub-meta">Literatura · Séc. XIX</div></div>
+          </div>
+          <div class="sub-item">
+            <div class="sub-avatar"><img src="https://picsum.photos/id/1027/32/32" alt=""/></div>
+            <div><div class="sub-name">Clarice Lispector</div><div class="sub-meta">Literatura · Séc. XX</div></div>
+          </div>
+          <div class="sub-item">
+            <div class="sub-avatar"><img src="https://picsum.photos/id/1025/32/32" alt=""/></div>
+            <div><div class="sub-name">Villa-Lobos</div><div class="sub-meta">Música · Séc. XX</div></div>
+          </div>
+          <div class="sub-item">
+            <div class="sub-avatar"><img src="https://picsum.photos/id/1074/32/32" alt=""/></div>
+            <div><div class="sub-name">Oscar Niemeyer</div><div class="sub-meta">Arquitetura · Séc. XX</div></div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- MAIN -->
+    <div class="col-12 col-lg-10">
+      <main class="main-content">
+
+        <!-- HERO -->
+        <section class="hero-section mb-4">
+          <span class="hero-badge">Pessoa em Destaque</span>
+          <div class="row g-0">
+            <div class="col-4 col-md-2">
+              <div class="hero-img">
+                <img src="https://picsum.photos/id/1005/200/280" alt="Machado de Assis"/>
+              </div>
+            </div>
+            <div class="col-8 col-md-8">
+              <div class="hero-body">
+                <h2>Machado de Assis</h2>
+                <p>Considerado o maior nome da literatura brasileira, fundador da Academia Brasileira de Letras e mestre do Realismo. Sua obra marcou profundamente a cultura nacional com romances, contos e crônicas de rara perspicácia psicológica.</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-2">
+              <div class="hero-actions">
+                <button class="btn-accent w-100 mb-2">Ver perfil completo</button>
+                <button class="btn-outline-light-custom w-100">+ Seguir</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PESSOAS -->
+        <section class="mb-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-3">
+            <h2 class="sec-title">Pessoas</h2>
+            <a href="#" class="sec-link">Ver todos →</a>
+          </div>
+          <div class="custom-tabs mb-3">
+            <button class="tab-btn active">Em destaque</button>
+            <button class="tab-btn">Recém adicionados</button>
+            <button class="tab-btn">Mais buscados</button>
+          </div>
+          <!-- Bootstrap grid: 2 col mobile, 3 col tablet, 5 col desktop -->
+          <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3 mb-4">
+
+            <div class="col">
+              <article class="pessoa-card">
+                <div class="pessoa-card-img">
+                  <img src="https://picsum.photos/id/1027/200/270" alt="Clarice Lispector"/>
+                  <span class="area-badge">Literatura</span>
+                </div>
+                <div class="pessoa-card-body">
+                  <h3>Clarice Lispector</h3>
+                  <p class="pessoa-card-meta">Escritora · 1920–1977</p>
+                  <span class="tag">Literatura</span> <span class="tag">Brasil</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pessoa-card">
+                <div class="pessoa-card-img">
+                  <img src="https://picsum.photos/id/1012/200/270" alt="Guimarães Rosa"/>
+                  <span class="area-badge">Literatura</span>
+                </div>
+                <div class="pessoa-card-body">
+                  <h3>Guimarães Rosa</h3>
+                  <p class="pessoa-card-meta">Escritor · 1908–1967</p>
+                  <span class="tag">Literatura</span> <span class="tag">Brasil</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pessoa-card">
+                <div class="pessoa-card-img">
+                  <img src="https://picsum.photos/id/1025/200/270" alt="Villa-Lobos"/>
+                  <span class="area-badge">Música</span>
+                </div>
+                <div class="pessoa-card-body">
+                  <h3>Villa-Lobos</h3>
+                  <p class="pessoa-card-meta">Compositor · 1887–1959</p>
+                  <span class="tag">Música</span> <span class="tag">Brasil</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pessoa-card">
+                <div class="pessoa-card-img">
+                  <img src="https://picsum.photos/id/1074/200/270" alt="Drummond de Andrade"/>
+                  <span class="area-badge">Poesia</span>
+                </div>
+                <div class="pessoa-card-body">
+                  <h3>Drummond de Andrade</h3>
+                  <p class="pessoa-card-meta">Poeta · 1902–1987</p>
+                  <span class="tag">Poesia</span> <span class="tag">Brasil</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pessoa-card">
+                <div class="pessoa-card-img">
+                  <img src="https://picsum.photos/id/1011/200/270" alt="Tarsila do Amaral"/>
+                  <span class="area-badge">Arte</span>
+                </div>
+                <div class="pessoa-card-body">
+                  <h3>Tarsila do Amaral</h3>
+                  <p class="pessoa-card-meta">Pintora · 1886–1973</p>
+                  <span class="tag">Arte</span> <span class="tag">Brasil</span>
+                </div>
+              </article>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- OBRAS -->
+        <section class="mb-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-3">
+            <h2 class="sec-title">Produções recentes</h2>
+            <a href="#" class="sec-link">Ver todas →</a>
+          </div>
+          <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3 mb-4">
+
+            <div class="col">
+              <article class="obra-card">
+                <div class="obra-card-img"><img src="https://picsum.photos/id/24/200/300" alt="Dom Casmurro"/></div>
+                <div class="obra-card-body">
+                  <p class="obra-card-title">Dom Casmurro</p>
+                  <p class="obra-card-autor">Machado de Assis</p>
+                  <p class="obra-card-year">1899 · Romance</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="obra-card">
+                <div class="obra-card-img"><img src="https://picsum.photos/id/42/200/300" alt="A Hora da Estrela"/></div>
+                <div class="obra-card-body">
+                  <p class="obra-card-title">A Hora da Estrela</p>
+                  <p class="obra-card-autor">Clarice Lispector</p>
+                  <p class="obra-card-year">1977 · Romance</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="obra-card">
+                <div class="obra-card-img"><img src="https://picsum.photos/id/65/200/300" alt="Grande Sertão: Veredas"/></div>
+                <div class="obra-card-body">
+                  <p class="obra-card-title">Grande Sertão: Veredas</p>
+                  <p class="obra-card-autor">Guimarães Rosa</p>
+                  <p class="obra-card-year">1956 · Romance</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="obra-card">
+                <div class="obra-card-img"><img src="https://picsum.photos/id/167/200/300" alt="Bachianas Brasileiras"/></div>
+                <div class="obra-card-body">
+                  <p class="obra-card-title">Bachianas Brasileiras</p>
+                  <p class="obra-card-autor">Villa-Lobos</p>
+                  <p class="obra-card-year">1930–1945 · Música</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="obra-card">
+                <div class="obra-card-img"><img src="https://picsum.photos/id/240/200/300" alt="Abaporu"/></div>
+                <div class="obra-card-body">
+                  <p class="obra-card-title">Abaporu</p>
+                  <p class="obra-card-autor">Tarsila do Amaral</p>
+                  <p class="obra-card-year">1928 · Pintura</p>
+                </div>
+              </article>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- RELAÇÕES -->
+        <section class="mb-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-3">
+            <h2 class="sec-title">Relações: pessoa × produção</h2>
+            <a href="#" class="sec-link">Ver todas →</a>
+          </div>
+
+          <div class="relacao-item d-flex align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-2" style="min-width:170px">
+              <div class="rel-avatar"><img src="https://picsum.photos/id/1005/40/40" alt=""/></div>
+              <div><div class="rel-info-name">Machado de Assis</div><div class="rel-info-meta">Escritor</div></div>
+            </div>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <span class="rel-role d-none d-md-inline">autor</span>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <div class="d-flex align-items-center gap-2 ms-md-auto">
+              <div class="rel-obra-thumb"><img src="https://picsum.photos/id/24/34/46" alt=""/></div>
+              <div><div class="rel-obra-title">Dom Casmurro</div><div class="rel-obra-year">1899</div></div>
+            </div>
+            <button class="btn-rel ms-auto">Ver →</button>
+          </div>
+
+          <div class="relacao-item d-flex align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-2" style="min-width:170px">
+              <div class="rel-avatar"><img src="https://picsum.photos/id/1027/40/40" alt=""/></div>
+              <div><div class="rel-info-name">Clarice Lispector</div><div class="rel-info-meta">Escritora</div></div>
+            </div>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <span class="rel-role d-none d-md-inline">autora</span>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <div class="d-flex align-items-center gap-2 ms-md-auto">
+              <div class="rel-obra-thumb"><img src="https://picsum.photos/id/42/34/46" alt=""/></div>
+              <div><div class="rel-obra-title">A Hora da Estrela</div><div class="rel-obra-year">1977</div></div>
+            </div>
+            <button class="btn-rel ms-auto">Ver →</button>
+          </div>
+
+          <div class="relacao-item d-flex align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-2" style="min-width:170px">
+              <div class="rel-avatar"><img src="https://picsum.photos/id/1011/40/40" alt=""/></div>
+              <div><div class="rel-info-name">Tarsila do Amaral</div><div class="rel-info-meta">Pintora</div></div>
+            </div>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <span class="rel-role d-none d-md-inline">criadora</span>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <div class="d-flex align-items-center gap-2 ms-md-auto">
+              <div class="rel-obra-thumb"><img src="https://picsum.photos/id/240/34/46" alt=""/></div>
+              <div><div class="rel-obra-title">Abaporu</div><div class="rel-obra-year">1928</div></div>
+            </div>
+            <button class="btn-rel ms-auto">Ver →</button>
+          </div>
+
+          <div class="relacao-item d-flex align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-2" style="min-width:170px">
+              <div class="rel-avatar"><img src="https://picsum.photos/id/1012/40/40" alt=""/></div>
+              <div><div class="rel-info-name">Guimarães Rosa</div><div class="rel-info-meta">Escritor</div></div>
+            </div>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <span class="rel-role d-none d-md-inline">autor</span>
+            <span class="rel-arrow d-none d-md-inline">→</span>
+            <div class="d-flex align-items-center gap-2 ms-md-auto">
+              <div class="rel-obra-thumb"><img src="https://picsum.photos/id/65/34/46" alt=""/></div>
+              <div><div class="rel-obra-title">Grande Sertão: Veredas</div><div class="rel-obra-year">1956</div></div>
+            </div>
+            <button class="btn-rel ms-auto">Ver →</button>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container-fluid px-4">
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <a class="footer-logo" href="#">Pessoas <span>&</span> Produções</a>
+        <p class="footer-desc">Um catálogo colaborativo de pessoas notáveis e suas criações. Conectando vidas, obras e legados através do tempo.</p>
+      </div>
+      <div class="col-6 col-md-2">
+        <p class="footer-col-title">Navegar</p>
+        <ul class="footer-links">
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Pessoas</a></li>
+          <li><a href="#">Produções</a></li>
+          <li><a href="#">Categorias</a></li>
+          <li><a href="#">Sobre</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-2">
+        <p class="footer-col-title">Comunidade</p>
+        <ul class="footer-links">
+          <li><a href="#">Contribuir</a></li>
+          <li><a href="#">Diretrizes</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-4">
+        <p class="footer-col-title">Newsletter</p>
+        <p class="footer-desc mb-2">Receba novidades sobre pessoas e obras adicionadas ao catálogo.</p>
+        <input class="newsletter-input" type="text" placeholder="Seu nome"/>
+        <input class="newsletter-input" type="email" placeholder="seu@email.com"/>
+        <button class="btn-newsletter">Inscrever-se</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="container-fluid px-4 d-flex justify-content-between flex-wrap gap-2">
+    <p>© 2025 Pessoas & Produções. Todos os direitos reservados.</p>
+    <p>Feito com cuidado para preservar legados.</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const group = btn.closest('.sb-section');
+    group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

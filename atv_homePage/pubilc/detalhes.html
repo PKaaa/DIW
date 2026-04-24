@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Detalhes — Pessoas & Produções</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="styleDeta.css" rel="stylesheet">
+</head>
+<body>
+    
+<header>
+  <nav>
+    <a class="nav-logo" href="index.html">Pessoas <span>&</span> Produções</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="#" class="active">Pessoas</a></li>
+      <li><a href="#">Produções</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+    <div class="nav-search">
+      <input type="text" placeholder="Buscar pessoa ou obra…"/>
+      <button class="nav-btn">Entrar</button>
+    </div>
+  </nav>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-section">
+      <p class="sb-title">Área de atuação</p>
+      <div class="filter-group">
+        <button class="filter-btn active">Literatura</button>
+        <button class="filter-btn">Música</button>
+        <button class="filter-btn">Ciência</button>
+        <button class="filter-btn">Arte Visual</button>
+        <button class="filter-btn">Cinema</button>
+        <button class="filter-btn">Filosofia</button>
+      </div>
+    </div>
+    <div class="sb-section">
+      <p class="sb-title">Período</p>
+      <div class="filter-group">
+        <button class="filter-btn">Séc. XVIII</button>
+        <button class="filter-btn">Séc. XIX</button>
+        <button class="filter-btn active">Séc. XX</button>
+        <button class="filter-btn">Séc. XXI</button>
+      </div>
+    </div>
+    <div class="sb-section">
+      <p class="sb-title">Origem</p>
+      <div class="filter-group">
+        <button class="filter-btn active">Brasil</button>
+        <button class="filter-btn">Europa</button>
+        <button class="filter-btn">América do Norte</button>
+        <button class="filter-btn">Ásia</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- conteúdo inserido dinamicamente pelo app.js -->
+    <div id="detalhe-container"></div>
+  </main>
+
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <a class="footer-logo" href="index.html">Pessoas <span>&</span> Produções</a>
+    <p>Um catálogo colaborativo de pessoas notáveis e suas criações. Conectando vidas, obras e legados através do tempo.</p>
+  </div>
+  <div>
+    <p class="footer-col-title">Navegar</p>
+    <ul class="footer-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="#">Pessoas</a></li>
+      <li><a href="#">Produções</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Comunidade</p>
+    <ul class="footer-links">
+      <li><a href="#">Contribuir</a></li>
+      <li><a href="#">Diretrizes</a></li>
+      <li><a href="#">API</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Newsletter</p>
+    <div class="newsletter-form">
+      <p>Receba novidades sobre pessoas e obras adicionadas ao catálogo.</p>
+      <input type="text" placeholder="Seu nome"/>
+      <input type="email" placeholder="seu@email.com"/>
+      <button type="submit">Inscrever-se</button>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Pessoas & Produções. Todos os direitos reservados.</p>
+  <p>Feito com cuidado para preservar legados.</p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

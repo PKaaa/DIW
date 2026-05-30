@@ -1,0 +1,258 @@
+{
+  "pessoas": [
+    {
+      "id": 1,
+      "nome": "Clarice Lispector",
+      "profissao": "Escritora",
+      "periodo": "1920–1977",
+      "area": "Literatura",
+      "origem": "Brasil",
+      "seculo": "Séc. XX",
+      "destaque": true,
+      "imagem": "https://picsum.photos/id/1027/400/500",
+      "bio": "Uma das mais importantes escritoras brasileiras, conhecida por sua prosa introspectiva e estilo inovador. Suas obras exploram a consciência humana com profundidade psicológica singular.",
+      "nacionalidade": "Brasileira (naturalizada)",
+      "nascimento": "10 de dezembro de 1920",
+      "falecimento": "9 de dezembro de 1977"
+    },
+    {
+      "id": 2,
+      "nome": "Guimarães Rosa",
+      "profissao": "Escritor",
+      "periodo": "1908–1967",
+      "area": "Literatura",
+      "origem": "Brasil",
+      "seculo": "Séc. XX",
+      "destaque": true,
+      "imagem": "https://picsum.photos/id/1012/400/500",
+      "bio": "Mestre da literatura regionalista brasileira, revolucionou a língua portuguesa com sua escrita inventiva e poética. Grande Sertão: Veredas é considerado um dos maiores romances da literatura mundial.",
+      "nacionalidade": "Brasileiro",
+      "nascimento": "27 de junho de 1908",
+      "falecimento": "19 de novembro de 1967"
+    },
+    {
+      "id": 3,
+      "nome": "Villa-Lobos",
+      "profissao": "Compositor",
+      "periodo": "1887–1959",
+      "area": "Música",
+      "origem": "Brasil",
+      "seculo": "Séc. XX",
+      "destaque": true,
+      "imagem": "https://picsum.photos/id/1025/400/500",
+      "bio": "O mais importante compositor brasileiro, Villa-Lobos foi um gênio criativo que fusionou a música erudita europeia com elementos do folclore e da música popular brasileira.",
+      "nacionalidade": "Brasileiro",
+      "nascimento": "5 de março de 1887",
+      "falecimento": "17 de novembro de 1959"
+    },
+    {
+      "id": 4,
+      "nome": "Drummond de Andrade",
+      "profissao": "Poeta",
+      "periodo": "1902–1987",
+      "area": "Literatura",
+      "origem": "Brasil",
+      "seculo": "Séc. XX",
+      "destaque": false,
+      "imagem": "https://picsum.photos/id/1074/400/500",
+      "bio": "Considerado o maior poeta brasileiro do século XX, Carlos Drummond de Andrade é reconhecido pela ironia, lirismo e profundidade filosófica de sua obra poética.",
+      "nacionalidade": "Brasileiro",
+      "nascimento": "31 de outubro de 1902",
+      "falecimento": "17 de agosto de 1987"
+    },
+    {
+      "id": 5,
+      "nome": "Tarsila do Amaral",
+      "profissao": "Pintora",
+      "periodo": "1886–1973",
+      "area": "Arte Visual",
+      "origem": "Brasil",
+      "seculo": "Séc. XX",
+      "destaque": false,
+      "imagem": "https://picsum.photos/id/1011/400/500",
+      "bio": "Principal representante do Modernismo brasileiro nas artes plásticas, Tarsila criou obras icônicas que sintetizam a identidade cultural brasileira com influências do cubismo europeu.",
+      "nacionalidade": "Brasileira",
+      "nascimento": "1 de setembro de 1886",
+      "falecimento": "17 de janeiro de 1973"
+    },
+    {
+      "id": 6,
+      "nome": "Machado de Assis",
+      "profissao": "Escritor",
+      "periodo": "1839–1908",
+      "area": "Literatura",
+      "origem": "Brasil",
+      "seculo": "Séc. XIX",
+      "destaque": false,
+      "imagem": "https://picsum.photos/id/1005/400/500",
+      "bio": "Considerado o maior nome da literatura brasileira, fundador da Academia Brasileira de Letras e mestre do Realismo. Sua obra marcou profundamente a cultura nacional com romances, contos e crônicas de rara perspicácia psicológica.",
+      "nacionalidade": "Brasileiro",
+      "nascimento": "21 de junho de 1839",
+      "falecimento": "29 de setembro de 1908"
+    }
+  ],
+  "producoes": [
+    {
+      "id": 1,
+      "pessoaId": 1,
+      "titulo": "A Hora da Estrela",
+      "tipo": "Romance",
+      "ano": 1977,
+      "descricao": "Último romance publicado em vida pela autora, narra a história de Macabéa, uma nordestina pobre vivendo no Rio de Janeiro.",
+      "imagem": "https://picsum.photos/id/24/300/400"
+    },
+    {
+      "id": 2,
+      "pessoaId": 1,
+      "titulo": "A Paixão Segundo G.H.",
+      "tipo": "Romance",
+      "ano": 1964,
+      "descricao": "Considerado um dos maiores romances da literatura brasileira, narra a experiência mística de uma escultora ao esmagar uma barata.",
+      "imagem": "https://picsum.photos/id/42/300/400"
+    },
+    {
+      "id": 3,
+      "pessoaId": 1,
+      "titulo": "Laços de Família",
+      "tipo": "Conto",
+      "ano": 1960,
+      "descricao": "Coletânea de contos que explora as relações familiares e os conflitos internos de personagens femininas.",
+      "imagem": "https://picsum.photos/id/65/300/400"
+    },
+    {
+      "id": 4,
+      "pessoaId": 2,
+      "titulo": "Grande Sertão: Veredas",
+      "tipo": "Romance",
+      "ano": 1956,
+      "descricao": "Considerado o maior romance brasileiro, acompanha o ex-jagunço Riobaldo em suas memórias do sertão mineiro.",
+      "imagem": "https://picsum.photos/id/67/300/400"
+    },
+    {
+      "id": 5,
+      "pessoaId": 2,
+      "titulo": "Sagarana",
+      "tipo": "Contos",
+      "ano": 1946,
+      "descricao": "Primeiro livro do autor, composto por nove contos ambientados no sertão de Minas Gerais.",
+      "imagem": "https://picsum.photos/id/80/300/400"
+    },
+    {
+      "id": 6,
+      "pessoaId": 2,
+      "titulo": "Primeiras Estórias",
+      "tipo": "Contos",
+      "ano": 1962,
+      "descricao": "Coletânea de 21 contos que retratam personagens simples do interior brasileiro com linguagem poética.",
+      "imagem": "https://picsum.photos/id/96/300/400"
+    },
+    {
+      "id": 7,
+      "pessoaId": 3,
+      "titulo": "Bachianas Brasileiras",
+      "tipo": "Música Erudita",
+      "ano": 1930,
+      "descricao": "Série de 9 suítes que combinam o estilo contrapontístico de Bach com elementos da música folclórica brasileira.",
+      "imagem": "https://picsum.photos/id/167/300/400"
+    },
+    {
+      "id": 8,
+      "pessoaId": 3,
+      "titulo": "Choros",
+      "tipo": "Música Erudita",
+      "ano": 1920,
+      "descricao": "Série de 16 composições que absorvem e transformam os ritmos e melodias da música popular urbana brasileira.",
+      "imagem": "https://picsum.photos/id/180/300/400"
+    },
+    {
+      "id": 9,
+      "pessoaId": 3,
+      "titulo": "Floresta do Amazonas",
+      "tipo": "Música Erudita",
+      "ano": 1958,
+      "descricao": "Obra orquestral que evoca a grandiosidade e a natureza exuberante da floresta amazônica.",
+      "imagem": "https://picsum.photos/id/192/300/400"
+    },
+    {
+      "id": 10,
+      "pessoaId": 4,
+      "titulo": "Alguma Poesia",
+      "tipo": "Poesia",
+      "ano": 1930,
+      "descricao": "Primeiro livro do autor, marcado pela ironia e pelo lirismo que viria a caracterizar toda a sua obra.",
+      "imagem": "https://picsum.photos/id/200/300/400"
+    },
+    {
+      "id": 11,
+      "pessoaId": 4,
+      "titulo": "A Rosa do Povo",
+      "tipo": "Poesia",
+      "ano": 1945,
+      "descricao": "Obra de profundo engajamento social e político, escrita durante a Segunda Guerra Mundial.",
+      "imagem": "https://picsum.photos/id/213/300/400"
+    },
+    {
+      "id": 12,
+      "pessoaId": 4,
+      "titulo": "Sentimento do Mundo",
+      "tipo": "Poesia",
+      "ano": 1940,
+      "descricao": "Coletânea que marca a transição do poeta para uma poesia mais reflexiva e universal.",
+      "imagem": "https://picsum.photos/id/225/300/400"
+    },
+    {
+      "id": 13,
+      "pessoaId": 5,
+      "titulo": "Abaporu",
+      "tipo": "Pintura",
+      "ano": 1928,
+      "descricao": "Ícone do Modernismo brasileiro, a tela representa uma figura humana com membros desproporcionais sob um sol escaldante.",
+      "imagem": "https://picsum.photos/id/240/300/400"
+    },
+    {
+      "id": 14,
+      "pessoaId": 5,
+      "titulo": "Operários",
+      "tipo": "Pintura",
+      "ano": 1933,
+      "descricao": "Obra que retrata a diversidade étnica dos trabalhadores brasileiros, símbolo da industrialização do país.",
+      "imagem": "https://picsum.photos/id/250/300/400"
+    },
+    {
+      "id": 15,
+      "pessoaId": 5,
+      "titulo": "A Negra",
+      "tipo": "Pintura",
+      "ano": 1923,
+      "descricao": "Uma das obras mais importantes do Modernismo brasileiro, celebra a herança afro-brasileira com formas sintéticas e vigorosas.",
+      "imagem": "https://picsum.photos/id/260/300/400"
+    },
+    {
+      "id": 16,
+      "pessoaId": 6,
+      "titulo": "Dom Casmurro",
+      "tipo": "Romance",
+      "ano": 1899,
+      "descricao": "Narra a história de Bentinho e Capitu, um dos relacionamentos mais enigmáticos da literatura brasileira.",
+      "imagem": "https://picsum.photos/id/270/300/400"
+    },
+    {
+      "id": 17,
+      "pessoaId": 6,
+      "titulo": "Memórias Póstumas de Brás Cubas",
+      "tipo": "Romance",
+      "ano": 1881,
+      "descricao": "Narrado por um defunto-autor, é considerado o marco inicial do Realismo brasileiro.",
+      "imagem": "https://picsum.photos/id/280/300/400"
+    },
+    {
+      "id": 18,
+      "pessoaId": 6,
+      "titulo": "Quincas Borba",
+      "tipo": "Romance",
+      "ano": 1891,
+      "descricao": "Romance que satiriza a filosofia do Humanitismo através das desventuras de Rubião.",
+      "imagem": "https://picsum.photos/id/290/300/400"
+    }
+  ]
+}

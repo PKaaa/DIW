@@ -1,0 +1,239 @@
+/* ══════════════════════════════════════
+   PÁGINA DE DETALHES — styleDeta.css
+══════════════════════════════════════ */
+
+/* ── Seção hero da pessoa ── */
+.detalhe-hero {
+  background: var(--ink);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  overflow: hidden;
+  margin-bottom: 36px;
+  min-height: 300px;
+  position: relative;
+  animation: fadeUp .5s ease both;
+}
+
+.detalhe-img { overflow: hidden; }
+.detalhe-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+.detalhe-info {
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.area-tag {
+  display: inline-block;
+  width: fit-content;
+  background: rgba(200,169,110,.2);
+  color: var(--accent);
+  font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  border: 1px solid rgba(200,169,110,.35);
+}
+
+.detalhe-info h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; color: #fff;
+  line-height: 1.15;
+}
+
+.detalhe-profissao {
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: .04em;
+}
+
+.detalhe-bio {
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.detalhe-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ── Seção extra: informações + stat ── */
+.detalhe-extra {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+  animation: fadeUp .5s .15s ease both;
+}
+
+.detalhe-bloco {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+}
+
+.detalhe-bloco h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 700; color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* lista de informações */
+.detalhe-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detalhe-lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.detalhe-lista li:last-child { border-bottom: none; }
+.detalhe-lista li span { color: var(--ink3); }
+.detalhe-lista li strong { color: var(--ink); }
+
+/* stat de total de produções */
+.detalhe-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 0;
+}
+
+.stat-numero {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--ink3);
+  letter-spacing: .04em;
+}
+
+/* ── Seção produções (entidade secundária) ── */
+.secao-producoes {
+  margin-bottom: 40px;
+  animation: fadeUp .5s .2s ease both;
+}
+
+.secao-producoes .sec-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* cards de produção (Bootstrap card override) */
+.producao-card {
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s, border-color .2s !important;
+  background: var(--surface);
+}
+.producao-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.1) !important;
+  border-color: var(--accent) !important;
+}
+
+.producao-img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+}
+
+.producao-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.producao-tipo {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 8px;
+}
+
+.producao-desc {
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.6;
+}
+
+/* ── Botão voltar ── */
+.btn-voltar {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink2);
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  transition: all .2s;
+}
+.btn-voltar:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVIDADE
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .detalhe-hero {
+    grid-template-columns: 1fr;
+  }
+  .detalhe-img {
+    height: 220px;
+  }
+  .detalhe-info {
+    padding: 24px 20px;
+  }
+  .detalhe-info h1 {
+    font-size: 24px;
+  }
+  .detalhe-extra {
+    grid-template-columns: 1fr;
+  }
+  .stat-numero {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .detalhe-info h1 {
+    font-size: 20px;
+  }
+  .detalhe-bio {
+    font-size: 12px;
+  }
+}

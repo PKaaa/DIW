@@ -484,3 +484,116 @@ footer {
     align-items: flex-start;
   }
 }
+
+/* ══════════════════════════════════════
+   CRUD — BOTÕES E MODAL
+══════════════════════════════════════ */
+
+/* Botão nova pessoa */
+.btn-nova-pessoa {
+  background: var(--accent);
+  color: var(--ink);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+.btn-nova-pessoa:hover { opacity: .85; }
+
+/* Botões editar e excluir nos cards */
+.btn-crud {
+  flex: 1;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.btn-editar {
+  background: var(--tag-bg);
+  color: var(--ink2);
+  border: 1px solid var(--border);
+}
+.btn-editar:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-excluir {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+.btn-excluir:hover { background: #dc2626; color: #fff; }
+
+/* Modal */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+}
+.modal-header {
+  background: var(--ink);
+  color: #fff;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+}
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+}
+.modal-header .btn-close { filter: invert(1); }
+
+.modal-body { padding: 24px; background: var(--bg); }
+
+.form-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink2);
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+.form-control {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border .2s;
+}
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200,169,110,.15);
+}
+
+.btn-salvar {
+  background: var(--accent);
+  color: var(--ink);
+  border: none;
+  border-radius: 6px;
+  padding: 9px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.btn-salvar:hover { opacity: .85; }
+
+.btn-cancelar {
+  background: transparent;
+  color: var(--ink2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 24px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-cancelar:hover { border-color: var(--accent); color: var(--accent); }

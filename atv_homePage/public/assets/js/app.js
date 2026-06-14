@@ -4,15 +4,14 @@
 const API_URL = 'https://musical-robot-g9g974r9pprc7pj-3000.app.github.dev';
 
 // ══════════════════════════════════════
-// HOME PAGE
+// HOME PAGE — CAROUSEL E GRID
 // ══════════════════════════════════════
 async function montarHome() {
-  const carousel = document.getElementById('carousel-destaques');
+  const carousel = document.getElementById('carousel-inner');
   const grid = document.getElementById('pessoa-grid');
   if (!carousel && !grid) return;
 
   try {
-    // busca todas as pessoas
     const resPessoas = await fetch(`${API_URL}/pessoas`);
     const pessoas = await resPessoas.json();
 
@@ -26,27 +25,22 @@ async function montarHome() {
       inner.innerHTML = '';
 
       destaques.forEach((pessoa, index) => {
-        // indicadores (bolinhas)
         indicators.innerHTML += `
-          <button
-            type="button"
-            data-bs-target="#carouselDestaques"
+          <button type="button" data-bs-target="#carouselDestaques"
             data-bs-slide-to="${index}"
             class="${index === 0 ? 'active' : ''}"
             aria-label="Slide ${index + 1}">
           </button>
         `;
-
-        // slides
         inner.innerHTML += `
           <div class="carousel-item ${index === 0 ? 'active' : ''}">
-            <div class="carousel-slide" onclick="window.location.href='detalhe.html?id=${pessoa.id}'" style="cursor:pointer">
+            <div class="carousel-slide" style="cursor:pointer">
               <img src="${pessoa.imagem}" alt="${pessoa.nome}" class="carousel-img"/>
               <div class="carousel-caption-custom">
                 <span class="carousel-area">${pessoa.area}</span>
                 <h2>${pessoa.nome}</h2>
                 <p>${pessoa.bio}</p>
-                <a href="https://musical-robot-g9g974r9pprc7pj-5501.app.github.dev/atv_homePage/public/detalhes.html?id=${pessoa.id}" class="btn-carousel">Ver perfil completo →</a>
+                <a href="detalhes.html?id=${pessoa.id}" class="btn-carousel">Ver perfil completo →</a>
               </div>
             </div>
           </div>
@@ -56,37 +50,185 @@ async function montarHome() {
 
     // ── Grid: todas as pessoas ──
     if (grid) {
-      grid.innerHTML = '';
-
-      pessoas.forEach(pessoa => {
-        const col = document.createElement('div');
-        col.className = 'col';
-        col.innerHTML = `
-          <article class="card pessoa-card h-100" onclick="window.location.href='https://musical-robot-g9g974r9pprc7pj-5501.app.github.dev/atv_homePage/public/detalhes.html?id=${pessoa.id}'" style="cursor:pointer">
-            <div class="pessoa-card-img">
-              <img src="${pessoa.imagem}" class="card-img-top" alt="${pessoa.nome}"/>
-              <span class="area-badge">${pessoa.area}</span>
-            </div>
-            <div class="card-body pessoa-card-body">
-              <h3 class="card-title">${pessoa.nome}</h3>
-              <p class="pessoa-card-meta">${pessoa.profissao} · ${pessoa.periodo}</p>
-              <div class="pessoa-card-tags">
-                <span class="tag">${pessoa.area}</span>
-                <span class="tag">${pessoa.origem}</span>
-              </div>
-            </div>
-          </article>
-        `;
-        grid.appendChild(col);
-      });
+      renderizarGrid(pessoas);
     }
 
   } catch (error) {
     console.error('Erro ao carregar dados da home:', error);
+    const grid = document.getElementById('pessoa-grid');
     if (grid) grid.innerHTML = '<p class="erro">Erro ao carregar pessoas. Verifique se o JSON Server está rodando.</p>';
   }
 }
 
+// ── Renderiza os cards do grid (CORRIGIDO: Aspas simples ao redor de pessoa.id) ──
+function renderizarGrid(pessoas) {
+  const grid = document.getElementById('pessoa-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  pessoas.forEach(pessoa => {
+    const col = document.createElement('div');
+    col.className = 'col';
+    col.innerHTML = `
+      <article class="card pessoa-card h-100" style="cursor:pointer">
+        <div class="pessoa-card-img" onclick="window.location.href='detalhes.html?id=${pessoa.id}'">
+          <img src="${pessoa.imagem}" class="card-img-top" alt="${pessoa.nome}"/>
+          <span class="area-badge">${pessoa.area}</span>
+        </div>
+        <div class="card-body pessoa-card-body">
+          <h3 class="card-title">${pessoa.nome}</h3>
+          <p class="pessoa-card-meta">${pessoa.profissao} · ${pessoa.periodo}</p>
+          <div class="pessoa-card-tags mb-2">
+            <span class="tag">${pessoa.area}</span>
+            <span class="tag">${pessoa.origem}</span>
+          </div>
+          <div class="d-flex gap-2 mt-auto">
+            <button class="btn-crud btn-editar" onclick="abrirModalEditar('${pessoa.id}')">✏️ Editar</button>
+            <button class="btn-crud btn-excluir" onclick="excluirPessoa('${pessoa.id}', '${pessoa.nome}')">🗑️ Excluir</button>
+          </div>
+        </div>
+      </article>
+    `;
+    grid.appendChild(col);
+  });
+}
+// ══════════════════════════════════════
+// CRUD — CREATE (POST)
+// ══════════════════════════════════════
+async function criarPessoa(dados) {
+  const res = await fetch(`${API_URL}/pessoas`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dados)
+  });
+  if (!res.ok) throw new Error('Erro ao criar pessoa');
+  return await res.json();
+}
+
+// ══════════════════════════════════════
+// CRUD — READ (GET por id)
+// ══════════════════════════════════════
+async function buscarPessoa(id) {
+  const res = await fetch(`${API_URL}/pessoas/${id}`);
+  if (!res.ok) throw new Error('Pessoa não encontrada');
+  return await res.json();
+}
+
+// ══════════════════════════════════════
+// CRUD — UPDATE (PUT)
+// ══════════════════════════════════════
+async function atualizarPessoa(id, dados) {
+  const res = await fetch(`${API_URL}/pessoas/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dados)
+  });
+  if (!res.ok) throw new Error('Erro ao atualizar pessoa');
+  return await res.json();
+}
+
+// ══════════════════════════════════════
+// CRUD — DELETE
+// ══════════════════════════════════════
+async function excluirPessoa(id, nome) {
+  if (!confirm(`Deseja excluir "${nome}"?`)) return;
+  try {
+    const res = await fetch(`${API_URL}/pessoas/${id}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error('Erro ao excluir');
+    alert(`"${nome}" excluída com sucesso!`);
+    const resPessoas = await fetch(`${API_URL}/pessoas`);
+    const pessoas = await resPessoas.json();
+    renderizarGrid(pessoas);
+  } catch (error) {
+    console.error('Erro no DELETE:', error);
+    alert('Erro ao excluir. Tente novamente.');
+  }
+}
+
+// ══════════════════════════════════════
+// MODAL — ABRIR PARA CRIAR
+// ══════════════════════════════════════
+function abrirModalCriar() {
+  document.getElementById('modal-titulo').textContent = 'Nova Pessoa';
+  document.getElementById('form-pessoa').reset();
+  document.getElementById('pessoa-id').value = '';
+  new bootstrap.Modal(document.getElementById('modalPessoa')).show();
+}
+
+// ══════════════════════════════════════
+// MODAL — ABRIR PARA EDITAR
+// ══════════════════════════════════════
+async function abrirModalEditar(id) {
+  try {
+    const pessoa = await buscarPessoa(id);
+    document.getElementById('modal-titulo').textContent = 'Editar Pessoa';
+    document.getElementById('pessoa-id').value = pessoa.id;
+    document.getElementById('campo-nome').value = pessoa.nome;
+    document.getElementById('campo-profissao').value = pessoa.profissao;
+    document.getElementById('campo-periodo').value = pessoa.periodo;
+    document.getElementById('campo-area').value = pessoa.area;
+    document.getElementById('campo-origem').value = pessoa.origem;
+    document.getElementById('campo-seculo').value = pessoa.seculo;
+    document.getElementById('campo-imagem').value = pessoa.imagem;
+    document.getElementById('campo-bio').value = pessoa.bio;
+    document.getElementById('campo-nacionalidade').value = pessoa.nacionalidade;
+    document.getElementById('campo-nascimento').value = pessoa.nascimento;
+    document.getElementById('campo-falecimento').value = pessoa.falecimento || '';
+    document.getElementById('campo-destaque').checked = pessoa.destaque;
+    new bootstrap.Modal(document.getElementById('modalPessoa')).show();
+  } catch (error) {
+    alert('Erro ao carregar dados para edição.');
+  }
+}
+
+// ══════════════════════════════════════
+// SUBMIT DO FORMULÁRIO (CORRIGIDO: Tratamento dinâmico de ID)
+// ══════════════════════════════════════
+async function salvarPessoa(e) {
+  e.preventDefault();
+
+  const id = document.getElementById('pessoa-id').value;
+  const dados = {
+    nome:          document.getElementById('campo-nome').value.trim(),
+    profissao:     document.getElementById('campo-profissao').value.trim(),
+    periodo:       document.getElementById('campo-periodo').value.trim(),
+    area:          document.getElementById('campo-area').value.trim(),
+    origem:        document.getElementById('campo-origem').value.trim(),
+    seculo:        document.getElementById('campo-seculo').value.trim(),
+    imagem:        document.getElementById('campo-imagem').value.trim(),
+    bio:           document.getElementById('campo-bio').value.trim(),
+    nacionalidade: document.getElementById('campo-nacionalidade').value.trim(),
+    nascimento:    document.getElementById('campo-nascimento').value.trim(),
+    falecimento:   document.getElementById('campo-falecimento').value.trim(),
+    destaque:      document.getElementById('campo-destaque').checked
+  };
+
+  try {
+    if (id) {
+      // CORREÇÃO: Não force o ID a ser Int com parseInt se o JSON server estiver gerando strings.
+      // Deixamos o ID original (seja ele número ou texto)
+      await atualizarPessoa(id, { id: id, ...dados });
+      alert('Pessoa atualizada com sucesso!');
+    } else {
+      await criarPessoa(dados);
+      alert('Pessoa cadastrada com sucesso!');
+    }
+
+    // Fecha o modal do Bootstrap
+    const modalElement = document.getElementById('modalPessoa');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+    modalInstance.hide();
+    
+    // Recarrega a listagem atualizada
+    const resPessoas = await fetch(`${API_URL}/pessoas`);
+    const pessoas = await resPessoas.json();
+    renderizarGrid(pessoas);
+
+  } catch (error) {
+    console.error(error);
+    alert('Erro ao salvar. Tente novamente.');
+  }
+}
 // ══════════════════════════════════════
 // PÁGINA DE DETALHES
 // ══════════════════════════════════════
@@ -95,7 +237,6 @@ async function montarDetalhes() {
   const galeria = document.getElementById('galeria-producoes');
   if (!container) return;
 
-  // pega o id da query string
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
 
@@ -105,19 +246,15 @@ async function montarDetalhes() {
   }
 
   try {
-    // busca a pessoa pelo id
     const resPessoa = await fetch(`${API_URL}/pessoas/${id}`);
     if (!resPessoa.ok) throw new Error('Pessoa não encontrada');
     const pessoa = await resPessoa.json();
 
-    // busca as produções vinculadas
     const resProducoes = await fetch(`${API_URL}/producoes?pessoaId=${id}`);
     const producoes = await resProducoes.json();
 
-    // atualiza título da aba
     document.title = `${pessoa.nome} — Pessoas & Produções`;
 
-    // ── Informações gerais ──
     container.innerHTML = `
       <section class="detalhe-hero">
         <div class="detalhe-img">
@@ -147,7 +284,6 @@ async function montarDetalhes() {
             <li><span>Período</span><strong>${pessoa.seculo}</strong></li>
           </ul>
         </div>
-
         <div class="detalhe-bloco">
           <h2>Total de Produções</h2>
           <div class="detalhe-stat">
@@ -158,15 +294,12 @@ async function montarDetalhes() {
       </section>
     `;
 
-    // ── Galeria de produções (entidade secundária) ──
     if (galeria) {
       galeria.innerHTML = '';
-
       if (producoes.length === 0) {
         galeria.innerHTML = '<p class="erro">Nenhuma produção encontrada.</p>';
         return;
       }
-
       producoes.forEach(prod => {
         const col = document.createElement('div');
         col.className = 'col';
@@ -196,4 +329,7 @@ async function montarDetalhes() {
 window.onload = () => {
   montarHome();
   montarDetalhes();
+
+  const form = document.getElementById('form-pessoa');
+  if (form) form.addEventListener('submit', salvarPessoa);
 };
